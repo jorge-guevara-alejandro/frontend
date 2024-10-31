@@ -1,8 +1,26 @@
 import Image from "next/image"
 import Link from "next/link"
-
 import { CiLogout } from "react-icons/ci"
 import { SidebarItem } from "./SidebarItem"
+import { IoCallOutline, IoCheckboxOutline, IoListOutline } from "react-icons/io5"
+
+const menuItems = [
+    {
+        icon: <IoCallOutline />,
+        title: 'Dashboard',
+        path: '/dashboard'
+    },
+    {
+        icon: <IoCheckboxOutline />,
+        title: 'Proveedor',
+        path: '/dashboard/supplier'
+    },
+    {
+        icon: <IoListOutline />,
+        title: 'Producto',
+        path: '/dashboard/product'
+    }
+]
 
 export const Sidebar = () => {
     return (
@@ -34,7 +52,12 @@ export const Sidebar = () => {
                 </div>
 
                 <ul className="space-y-2 tracking-wide mt-8">
-                    <SidebarItem />
+                    {
+                        menuItems.map(item => (
+                            <SidebarItem key={item.path} {...item} />
+                        ))
+                    }
+
                 </ul>
             </div>
 
